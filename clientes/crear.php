@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'error al registrar el cliente.';
         error_log('error al registrar el cliente: ' . $e->getMessage());
 
-    }
+    }hola
 
 }
 ?>
