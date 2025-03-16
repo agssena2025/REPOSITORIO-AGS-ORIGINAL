@@ -46,10 +46,6 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                         <a href="editar.php?id=<?=$cliente['id'] ?>">Editar></a>
                         <a href="eliminar.php?id=<?=$cliente['id'] ?>">onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
-
-                    </td>
-                    <td>
-                        <a href="eliminar.php?id=<?= $cliente['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?');">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
