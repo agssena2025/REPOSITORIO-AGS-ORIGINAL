@@ -6,12 +6,13 @@ require '../db/conexion.php';
 
 $conn = obtenerConexion();
 $sql = "SELECT * FROM clientes";
-$stmt = $conn ->prepare($sql);
+$stmt = $conn->prepare($sql);
 $stmt->execute();
 $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +20,12 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../css/estilo.css">
 
 </head>
+
 <body>
 
     <?php if (isset($_GET['mensaje'])): ?>
-        <p style="color:green;"><?=$_GET['mensaje'] ?></p>
-        <?php endif; ?>
+        <p style="color:green;"><?= $_GET['mensaje'] ?></p>
+    <?php endif; ?>
 
     <h1>Listado de Clientes</h1>
     <table border="1">
@@ -44,8 +46,8 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $cliente['email'] ?></td>
                     <td><?= $cliente['telefono'] ?></td>
                     <td>
-                        <a href="editar.php?id=<?=$cliente['id'] ?>">Editar></a>
-                        <a href="eliminar.php?id=<?=$cliente['id'] ?>">onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
+                        <a href="editar.php?id=<?= $cliente['id'] ?>">Editar></a>
+                        <a href="eliminar.php?id=<?= $cliente['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -54,6 +56,7 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
     <p><a href="crear.php">Agregar Cliente</a></p>
     <p><a href="../index.php">Volver al Dashboard</a></p>
-    
+
 </body>
+
 </html>
