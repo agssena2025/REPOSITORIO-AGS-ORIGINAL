@@ -20,6 +20,11 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </head>
 <body>
+
+    <?php if (isset($_GET['mensaje'])): ?>
+        <p style="color:green;"><?=$_GET['mensaje'] ?></p>
+        <?php endif; ?>
+
     <h1>Listado de Clientes</h1>
     <table border="1">
         <thead>
@@ -42,6 +47,9 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <a href="editar.php?id=<?=$cliente['id'] ?>">Editar></a>
                         <a href="eliminar.php?id=<?=$cliente['id'] ?>">onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
 
+                    </td>
+                    <td>
+                        <a href="eliminar.php?id=<?= $cliente['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?');">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
