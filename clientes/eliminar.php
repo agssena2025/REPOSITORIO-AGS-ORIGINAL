@@ -1,13 +1,14 @@
 <?php
-include('../db/conexion.php');
+session_start();
+require '../includes/validar_sesion.php';
+require '../db/conexion.php';
 
-$id = $_GET['id'];
+$id_cliente = $_GET['id'];
 $conexion = obtenerConexion(); // Conexión con PDO
 
 try {
-    // Consulta SQL ajustada según la columna 'id' de la tabla 'clientes'
-    $stmt = $conexion->prepare("DELETE FROM clientes WHERE id = :id");
-    $stmt->bindParam(':id', $id);
+    $stmt = $conexion->prepare("DELETE FROM clientes WHERE id = :id_cliente");
+    $stmt->bindParam(':id_cliente', $id_cliente);
     $stmt->execute();
 
     header("Location: listar.php?mensaje=Cliente eliminado correctamente");
