@@ -1,25 +1,18 @@
 <?php
-session_start();
-require '../includes/validar_sesion.php';
-require '../db/conexion.php';
+include('../db/conexion.php');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$id = $_GET['id'];
+$conexion = obtenerConexion(); // Conexión con PDO
 
-    try {
-        $conn = obtenerConexion();
-        $stmt = $conn->prepare("DELETE FROM clientes WHERE id = ?");
-        $stmt->execute([$id]);
+try {
+    // Consulta SQL ajustada según la columna 'id' de la tabla 'clientes'
+    $stmt = $conexion->prepare("DELETE FROM clientes WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 
-        header("Location: listar.php?mensaje=Cliente eliminado correctamente");
-        exit();
-
-    } catch (PDOException $e) {
-        echo "Error al eliminar el cliente: " . $e->getMessage();
-    }
-} else {
-    echo "ID de cliente no válido. ";
-
+    header("Location: listar.php?mensaje=Cliente eliminado correctamente");
+    exit();
+} catch (PDOException $e) {
+    echo "Error al eliminar el cliente: " . $e->getMessage();
 }
 ?>
-
