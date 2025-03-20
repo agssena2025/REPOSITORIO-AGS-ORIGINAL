@@ -5,8 +5,8 @@ function obtenerConexion() {
     if ($conn === null) {
         $host = 'localhost';
         $dbname = 'ags_db';
-        $username = 'root';  // Ajusta si tienes un usuario diferente
-        $password = '';      // Ajusta si tienes contraseña en MySQL
+        $username = 'root';  // Ajustar si hay un usuario diferente
+        $password = '';      // Ajustar si hay una contraseña en MySQL
 
         try {
             $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
