@@ -13,7 +13,7 @@ $rol = $_SESSION['rol'];
 
         <?php if ($rol === 'Administrador' || $rol === 'Coordinador'): ?>
             <li><a href="/ags/clientes/listar.php">Gestión de Clientes</a></li>
-            <li><a href="/ags/servicios/listar.php">Gestión de Servicios</a></li>
+            <li><a href="/ags/servicios/listar_servicios.php">Gestión de Servicios</a></li>
             <li><a href="/ags/cotizaciones/listar.php">Gestión de Cotizaciones</a></li>
             <li><a href="/ags/activos/listar.php">Gestión de Activos</a></li>
             <li><a href="/ags/reportes/listar.php">Generar Reportes</a></li>
