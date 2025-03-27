@@ -19,13 +19,13 @@ require 'includes/menu.php'; // Menú dinámico según el rol
 
     <?php if ($_SESSION['rol'] === 'Administrador'): ?>
         <p><a href="clientes/listar.php">Gestión de Clientes</a></p>
-        <p><a href="servicios/listar.php">Gestión de Servicios</a></p>
+        <p><a href="servicios/listar_servicios.php">Gestión de Servicios</a></p>
         <p><a href="cotizaciones/listar.php">Gestión de Cotizaciones</a></p>
         <p><a href="activos/listar.php">Gestión de Activos</a></p>
         <p><a href="reportes/listar.php">Generación de Reportes</a></p>
     <?php elseif ($_SESSION['rol'] === 'Coordinador'): ?>
         <p><a href="clientes/listar.php">Gestión de Clientes</a></p>
-        <p><a href="servicios/listar.php">Gestión de Servicios</a></p>
+        <p><a href="servicios/listar_servicios.php">Gestión de Servicios</a></p>
         <p><a href="cotizaciones/listar.php">Gestión de Cotizaciones</a></p>
         <p><a href="activos/listar.php">Gestión de Activos</a></p>
         <p><a href="reportes/listar.php">Generación de Reportes</a></p>
