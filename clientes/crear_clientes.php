@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Guardar Cliente</button>
     </form>
 
-    <p><a href="listar.php">Volver al listado de clientes</a></p>
+    <p><a href="listar_clientes.php">Volver al listado de clientes</a></p>
 
 </body>
 </html>
