@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="telefono" value="<?= $cliente['telefono'] ?>" required><br><br>
 
         <button type="submit">Actualizar Cliente</button>
-        <a href="listar.php">Cancelar</a>
+        <a href="listar_clientes.php">Cancelar</a>
     </form>
 </body>
 </html>

@@ -21,17 +21,17 @@ require 'includes/menu.php'; // Menú dinámico según el rol
 
 
     <?php if (trim($_SESSION['rol']) === 'Administrador'): ?>
-        <p><a href="clientes/listar.php">Gestión de Clientes</a></p>
+        <p><a href="clientes/listar_clientes.php">Gestión de Clientes</a></p>
         <p><a href="servicios/listar_servicios.php">Gestión de Servicios</a></p>
-        <p><a href="cotizaciones/listar.php">Gestión de Cotizaciones</a></p>
-        <p><a href="activos/listar.php">Gestión de Activos</a></p>
-        <p><a href="reportes/listar.php">Generación de Reportes</a></p>
+        <p><a href="cotizaciones/listar_cotizaciones.php">Gestión de Cotizaciones</a></p>
+        <p><a href="activos/listar_activos.php">Gestión de Activos</a></p>
+        <p><a href="reportes/listar_reportes.php">Generación de Reportes</a></p>
     <?php elseif (trim($_SESSION['rol']) === 'Coordinador'): ?>
-        <p><a href="clientes/listar.php">Gestión de Clientes</a></p>
+        <p><a href="clientes/listar_clientes.php">Gestión de Clientes</a></p>
         <p><a href="servicios/listar_servicios.php">Gestión de Servicios</a></p>
-        <p><a href="cotizaciones/listar.php">Gestión de Cotizaciones</a></p>
-        <p><a href="activos/listar.php">Gestión de Activos</a></p>
-        <p><a href="reportes/listar.php">Generación de Reportes</a></p>
+        <p><a href="cotizaciones/listar_cotizaciones.php">Gestión de Cotizaciones</a></p>
+        <p><a href="activos/listar_activos.php">Gestión de Activos</a></p>
+        <p><a href="reportes/listar_reportes.php">Generación de Reportes</a></p>
     <?php elseif (trim($_SESSION['rol']) === 'Técnico'): ?>
         <p><a href="servicios/mis_ordenes.php">Mis Órdenes de Trabajo</a></p>
     <?php endif; ?>

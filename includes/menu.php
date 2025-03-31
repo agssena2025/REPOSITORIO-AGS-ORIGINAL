@@ -12,11 +12,11 @@ $rol = $_SESSION['rol'];
         <li><a href="/ags/index.php">Inicio</a></li>
 
         <?php if ($rol === 'Administrador' || $rol === 'Coordinador'): ?>
-            <li><a href="/ags/clientes/listar.php">Gestión de Clientes</a></li>
+            <li><a href="/ags/clientes/listar_clientes.php">Gestión de Clientes</a></li>
             <li><a href="/ags/servicios/listar_servicios.php">Gestión de Servicios</a></li>
-            <li><a href="/ags/cotizaciones/listar.php">Gestión de Cotizaciones</a></li>
-            <li><a href="/ags/activos/listar.php">Gestión de Activos</a></li>
-            <li><a href="/ags/reportes/listar.php">Generar Reportes</a></li>
+            <li><a href="/ags/cotizaciones/listar_cotizaciones.php">Gestión de Cotizaciones</a></li>
+            <li><a href="/ags/activos/listar_activos.php">Gestión de Activos</a></li>
+            <li><a href="/ags/reportes/listar_reportes.php">Generar Reportes</a></li>
         <?php endif; ?>
 
         <?php if ($rol === 'Técnico'): ?>

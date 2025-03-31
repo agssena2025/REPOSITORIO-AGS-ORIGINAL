@@ -46,15 +46,15 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $cliente['email'] ?></td>
                     <td><?= $cliente['telefono'] ?></td>
                     <td>
-                        <a href="editar.php?id=<?= $cliente['id'] ?>">Editar></a>
-                        <a href="eliminar.php?id=<?= $cliente['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
+                        <a href="editar_clientes.php?id=<?= $cliente['id'] ?>">Editar></a>
+                        <a href="eliminar_clientes.php?id=<?= $cliente['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
 
     </table>
-    <p><a href="crear.php">Agregar Cliente</a></p>
+    <p><a href="crear_clientes.php">Agregar Cliente</a></p>
     <p><a href="../index.php">Volver al Dashboard</a></p>
 
 </body>
