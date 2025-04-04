@@ -22,7 +22,7 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <h1>Lista de Servicios</h1>
-    <a href="crear_servicio.php">Registrar Nuevo Servicio</a>
+    <a href="crear_servicios.php">Registrar Nuevo Servicio</a>
     <table border="1">
         <thead>
             <tr>
@@ -41,8 +41,8 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?= $servicio['descripcion'] ?></td>
                 <td><?= $servicio['estado'] ?></td>
                 <td>
-                    <a href="editar_servicio.php?id=<?= $servicio['id'] ?>">Editar</a>
-                    <a href="eliminar_servicio.php?id=<?= $servicio['id'] ?>" onclick="return confirm('¿Seguro que deseas elimar este servicio?')">Eliminar</a>
+                    <a href="editar_servicios.php?id=<?= $servicio['id'] ?>">Editar</a>
+                    <a href="eliminar_servicios.php?id=<?= $servicio['id'] ?>" onclick="return confirm('¿Seguro que deseas elimar este servicio?')">Eliminar</a>
 
                 </td>
                 </tr>
