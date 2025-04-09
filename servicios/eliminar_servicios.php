@@ -17,12 +17,16 @@ $stmt->execute([$id]);
 
 if ($stmt->rowCount() > 0) {
     echo "Servicio eliminado correctamente.";
-    
+
 } else {
     echo "No se encontró el servicio o no se pudo eliminar.";
 }
 
 $conexion = null;
+
+header("Location: listar_servicios.php?mensaje=Servicio eliminado correctamente");
+exit; 
+
 
 
 ?>
