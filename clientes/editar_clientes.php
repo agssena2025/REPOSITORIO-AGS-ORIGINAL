@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require '../includes/validar_sesion.php';
 require '../db/conexion.php';
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':id',$id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Cliente actualizado correctamente'); window.location.href = 'listar.php'</script>";
+        echo "<script>alert('Cliente actualizado correctamente'); window.location.href = 'listar_clientes.php'</script>";
         
 
     } else {

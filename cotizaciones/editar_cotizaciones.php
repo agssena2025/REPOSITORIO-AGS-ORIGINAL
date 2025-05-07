@@ -1,63 +1,66 @@
-<?php 
-
+<?php
 session_start();
 
-require '../db/conexion.php';
 require '../includes/validar_sesion.php';
+require '../db/conexion.php';
 
-$id = $_GET['id'] ?? null;
+$id = $_GET['id'];
+$conexion = obtenerConexion();
 
-if (!$id) {
-    echo "ID no proporcionado";
-    exit;
-}
-
-//codigo para obtener datos actuales de la cotizacion.
-
-$sql = "SELECT * FROM cotizaciones  WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
+$stmt = $conexion->prepare("SELECT * FROM  cotizaciones WHERE id = :id");
+$stmt->bindParam(':id' , $id);
 $stmt->execute();
-$resultado = $stmt->get_result();
+$cotizacion = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($resultado->num_rows !== 1) {
-    echo "Cotización no encontrada";
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tipo = $_POST['tipo'];
+    $descripcion = $_POST['descripcion'];
+    $total = $_POST['total'];
 
-$cotizacion = $resultado->fetch_assoc();
+    $stmt =$conexion->prepare("UPDATE cotizaciones SET tipo = :tipo, descripcion = :descripcion, total = :total WHERE id = :id");
+    $stmt->bindParam(':tipo',$tipo);
+    $stmt->bindParam(':descripcion',$descripcion);
+    $stmt->bindParam(':total',$total);
+    $stmt->bindParam(':id',$id);
+    //$stmt->bindParam(':cliente_id',$cliente_id); error a revisar
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cliente = $_POST['cliente'];
-    $servicio = $_POST['servicio'];
-    $valor = $_POST['valor'];
+    if ($stmt->execute()) {
+        echo "<script>alert('Cotización actualizado correctamente'); window.location.href = 'listar_cotizaciones.php'</script>";
+        
 
-    $sqlUpdate = "UPDATE cotizaciones SET cliente = ?, servicio = ?, valor = ? WHERE id = ?";
-    $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("ssdi", $cliente, $servicio, $valor, $id);
-
-    if ($stmtUpdate->execute()) {
-        header("Location: listar_cotizaciones.php");
-        exit;
     } else {
-        echo "Error al actualizar la cotización.";
+        echo "<script>alert('Error al actualizar cotización');</script>";
     }
 }
 
 ?>
 
-<?php include '../includes/menu.php'; ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cotizaciones</title>
+</head>
+<body>
+<h1>Editar Cotización</h1>
+    <form method="POST">
+    <label>Tipo:</label>
+    <select name="tipo" required>
+        <option value="">Seleccione un tipo:</option>
+        <option value="producto" <?= $cotizacion['tipo'] === 'producto' ? 'selected' : '' ?>>Producto</option>
+        <option value="servicio" <?= $cotizacion['tipo'] === 'servicio' ? 'selected' : '' ?>>Servicio</option>
+    </select>
 
-<h2>Editar cotizaciones </h2>
-<form method="post">
-    <label>Cliente:</label>
-    <input type="text" name="cliente" value="<?= htmlspecialchars($cotizacion['cliente']) ?>" required><br>
 
-    <label>Servicio:</label>
-    <input type="text" name="servicio" value="<?= htmlspecialchars($cotizacion['servicio']) ?>" required><br>
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" value="<?= $cotizacion['descripcion'] ?>" required><br><br>
 
-    <label>Valor:</label>
-    <input type="text" name="valor" value="<?= htmlspecialchars($cotizacion['valor']) ?>" required><br>
+        <label>Total:</label>
+        <input type="number" step="0.01" name="total" value="<?= $cotizacion['total'] ?>" required><br><br>
 
-    <button type="submit">Guardar cambios</button>
-</form>
+        <button type="submit">Actualizar Cotización</button>
+        <a href="listar_cotizaciones.php">Cancelar</a>
+    </form>
+</body>
+</html>

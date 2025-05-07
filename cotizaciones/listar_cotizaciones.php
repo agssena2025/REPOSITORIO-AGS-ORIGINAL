@@ -35,6 +35,7 @@ $cotizaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Descripcion</th>
                 <th>Total</th>
                 <th>Fecha de Creacion</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +47,11 @@ $cotizaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= htmlspecialchars($cotizacion['descripcion']) ?></td>
                     <td><?= htmlspecialchars($cotizacion['total']) ?></td>
                     <td><?= htmlspecialchars($cotizacion['fecha_creacion']) ?></td>
+
+                    <td>
+                        <a href="editar_cotizaciones.php?id=<?= $cotizacion['id'] ?>">Editar></a>
+                        <a href="eliminar_cotizaciones.php?id=<?= $cotizacion['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</Eliminar></a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
